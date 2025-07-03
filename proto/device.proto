@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package device;
+
+option go_package = "device-service/proto;proto";
+
+service DeviceService {
+  rpc Connect(DeviceRequest) returns (DeviceResponse);
+  rpc Read(DeviceRequest) returns (ReadResponse);
+}
+
+message DeviceRequest {
+  string id = 1;
+}
+
+message DeviceResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+message ReadResponse {
+  bytes data = 1;
+  string error = 2;
+}
